@@ -3,7 +3,7 @@ package org.condigdojo.kata;
 public class Rover {
 
     public String execute(String commands) {
-        return null;
+        return "0:0:E";
     }
 
 }
