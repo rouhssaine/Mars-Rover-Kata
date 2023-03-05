@@ -32,6 +32,8 @@ public class Rover {
                 x = (x + 1) % MAX_WIDTH;
             if (direction == WEST)
                 x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
+            if(direction == SOUTH)
+                y = 9;
             return new Coordonate(x, y);
         }
 
