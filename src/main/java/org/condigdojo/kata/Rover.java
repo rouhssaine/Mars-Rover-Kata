@@ -7,19 +7,21 @@ import static org.condigdojo.kata.Rover.Direction.NORTH;
 public class Rover {
 
     Direction direction = NORTH;
-    int x, y = 0;
+    Coordonate coordonate = new Coordonate(0, 0);
 
     public String execute(String commands) {
         commands.chars().forEach(c -> {
             if (c == 'R') direction = direction.rotateRight();
             if (c == 'L') direction = direction.rotateLeft();
-            if (c == 'M') move();
+            if (c == 'M') coordonate = coordonate.move();
         });
-        return x + ":" + y + ":" + direction.value;
+        return coordonate.x + ":" + coordonate.y + ":" + direction.value;
     }
 
-    private void move() {
-        y += 1;
+    record Coordonate(int x, int y) {
+        Coordonate move() {
+            return new Coordonate(this.x, this.y+1);
+        }
     }
 
     enum Direction {
