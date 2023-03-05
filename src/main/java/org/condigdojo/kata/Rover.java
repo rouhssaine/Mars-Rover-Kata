@@ -19,17 +19,22 @@ public class Rover {
     }
 
     record Coordonate(int x, int y) {
+
+        public static final int MAX_HEIGHT = 10;
+        public static final int MAX_WIDTH = 10;
+
         Coordonate move(Direction direction) {
             int x = this.x;
             int y = this.y;
-            if(direction == NORTH)
-                y = (y + 1) % 10;
-            if(direction == EAST)
-                x = (x + 1) % 10;
+            if (direction == NORTH)
+                y = (y + 1) % MAX_HEIGHT;
+            if (direction == EAST)
+                x = (x + 1) % MAX_WIDTH;
             if (direction == WEST)
-                x = (x > 0) ? x - 1 : 10 - 1;
+                x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
             return new Coordonate(x, y);
         }
+
     }
 
     enum Direction {
