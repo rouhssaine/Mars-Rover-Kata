@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.condigdojo.kata.Direction.NORTH;
 
 @DisplayNameGeneration(ReplaceUnderscores.class)
 class RoverTest {
@@ -15,7 +16,9 @@ class RoverTest {
 
     @BeforeEach
     void setup() {
-        rover = new Rover();
+        var coordinate = new Coordinate(0, 0);
+        var direction = NORTH;
+        rover = new Rover(new Position(coordinate, direction));
     }
 
     @ParameterizedTest(name = "should return {1} when execute {0}")
