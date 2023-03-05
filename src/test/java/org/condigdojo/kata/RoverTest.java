@@ -1,8 +1,10 @@
 package org.condigdojo.kata;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator.ReplaceUnderscores;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,28 +13,18 @@ class RoverTest {
 
     private Rover rover;
 
-    @Test
-    void should_rotate_right() {
-        //GIVEN
+    @BeforeEach
+    void setup() {
         rover = new Rover();
-
-        //WHEN
-        var result = rover.execute("R");
-
-        //THEN
-        assertThat(result).isEqualTo("0:0:E");
     }
 
-    @Test
-    void should_rotate_right_right() {
-        //GIVEN
-        rover = new Rover();
-
-        //WHEN
-        var result = rover.execute("RR");
-
-        //THEN
-        assertThat(result).isEqualTo("0:0:S");
+    @ParameterizedTest(name = "should return {1} when execute {0}")
+    @CsvSource({
+            "R,0:0:E",
+            "RR,0:0:S"
+    })
+    void should_rotate_right(String commands, String expected) {
+        assertThat(rover.execute(commands)).isEqualTo(expected);
     }
 
 }
