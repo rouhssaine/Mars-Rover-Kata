@@ -33,6 +33,7 @@ class RoverTest {
     @CsvSource(value = {
             "L -> 0:0:W",
             "LL -> 0:0:S",
+            "LLL -> 0:0:E",
     }, delimiterString = " -> ")
     void should_rotate_left(String commands, String expected) {
         assertThat(rover.execute(commands)).isEqualTo(expected);
