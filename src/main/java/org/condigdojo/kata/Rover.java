@@ -26,7 +26,7 @@ public class Rover {
             if(direction == NORTH)
                 y = (y + 1) % 10;
             if(direction == EAST)
-                x += 1;
+                x = (x + 1) % 10;
             return new Coordonate(x, y);
         }
     }
