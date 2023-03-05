@@ -1,31 +1,50 @@
 package org.condigdojo.kata;
 
+import java.util.Map;
+
+import static org.condigdojo.kata.Rover.Direction.NORTH;
+
 public class Rover {
 
-    char direction = 'N';
+    Direction direction = NORTH;
 
     public String execute(String commands) {
         commands.chars().forEach(c -> {
-            if(c == 'R') direction = rotateRight();
-            if(c == 'L') direction = rotateLeft();
+            if (c == 'R') direction = direction.rotateRight();
+            if (c == 'L') direction = direction.rotateLeft();
         });
-        return "0:0:" + direction;
+        return "0:0:" + direction.value;
     }
 
-    private char rotateRight() {
-        if (direction == 'N') return 'E';
-        else if (direction == 'E') return 'S';
-        else if (direction == 'S') return 'W';
-        else if (direction == 'W') return 'N';
-        return direction;
-    }
+    enum Direction {
+        NORTH("N"),
+        EAST("E"),
+        SOUTH("S"),
+        WEST("W");
 
-    private char rotateLeft() {
-        if (direction == 'N') return 'W';
-        else if (direction == 'W') return 'S';
-        else if (direction == 'S') return 'E';
-        else if (direction == 'E') return 'N';
-        return direction;
+        private final String value;
+
+        Direction(String value) {
+            this.value = value;
+        }
+
+        public Direction rotateRight() {
+            var rightMap = Map.of(
+                    NORTH, EAST,
+                    EAST, SOUTH,
+                    SOUTH, WEST,
+                    WEST, NORTH);
+            return rightMap.get(this);
+        }
+
+        public Direction rotateLeft() {
+            var leftMap = Map.of(
+                    NORTH, WEST,
+                    WEST, SOUTH,
+                    SOUTH, EAST,
+                    EAST, NORTH);
+            return leftMap.get(this);
+        }
     }
 
 }
