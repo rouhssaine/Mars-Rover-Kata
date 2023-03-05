@@ -45,7 +45,15 @@ class RoverTest {
             "M -> 0:1:N",
             "MMMMMMMMMM -> 0:0:N", //wraps around if it reaches the end of the grid
     }, delimiterString = " -> ")
-    void should_move(String commands, String expected) {
+    void should_move_up(String commands, String expected) {
+        assertThat(rover.execute(commands)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest(name = "should return {1} when execute {0}")
+    @CsvSource(value = {
+            "RM -> 1:0:E",
+    }, delimiterString = " -> ")
+    void should_move_right(String commands, String expected) {
         assertThat(rover.execute(commands)).isEqualTo(expected);
     }
 
