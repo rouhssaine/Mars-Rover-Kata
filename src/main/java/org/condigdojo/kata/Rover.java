@@ -2,8 +2,14 @@ package org.condigdojo.kata;
 
 public class Rover {
 
+    char direction = 'N';
+
     public String execute(String commands) {
-        return "0:0:E";
+        commands.chars().forEach(c -> {
+            if (direction == 'E') direction = 'S';
+            if (direction == 'N') direction = 'E';
+        });
+        return "0:0:" + direction;
     }
 
 }
