@@ -2,7 +2,7 @@ package org.condigdojo.kata;
 
 import java.util.Map;
 
-import static org.condigdojo.kata.Rover.Direction.*;
+import static org.condigdojo.kata.Rover.Direction.NORTH;
 
 public class Rover {
 
@@ -26,14 +26,14 @@ public class Rover {
         Coordonate move(Direction direction) {
             int x = this.x;
             int y = this.y;
-            if (direction == NORTH)
-                y = (y + 1) % MAX_HEIGHT;
-            if (direction == EAST)
-                x = (x + 1) % MAX_WIDTH;
-            if (direction == WEST)
-                x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
-            if(direction == SOUTH)
-                y = 9;
+
+            switch (direction) {
+                case NORTH -> y = (y + 1) % MAX_HEIGHT;
+                case EAST -> x = (x + 1) % MAX_WIDTH;
+                case WEST -> x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
+                case SOUTH -> y = 9;
+            }
+
             return new Coordonate(x, y);
         }
 
