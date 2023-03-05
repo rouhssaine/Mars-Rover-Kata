@@ -34,6 +34,7 @@ class RoverTest {
             "L -> 0:0:W",
             "LL -> 0:0:S",
             "LLL -> 0:0:E",
+            "LLLL -> 0:0:N",
     }, delimiterString = " -> ")
     void should_rotate_left(String commands, String expected) {
         assertThat(rover.execute(commands)).isEqualTo(expected);
