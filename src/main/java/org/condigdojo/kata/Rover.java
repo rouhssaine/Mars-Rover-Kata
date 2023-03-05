@@ -7,13 +7,19 @@ import static org.condigdojo.kata.Rover.Direction.NORTH;
 public class Rover {
 
     Direction direction = NORTH;
+    int x, y = 0;
 
     public String execute(String commands) {
         commands.chars().forEach(c -> {
             if (c == 'R') direction = direction.rotateRight();
             if (c == 'L') direction = direction.rotateLeft();
+            if (c == 'M') move();
         });
-        return "0:0:" + direction.value;
+        return x + ":" + y + ":" + direction.value;
+    }
+
+    private void move() {
+        y += 1;
     }
 
     enum Direction {
