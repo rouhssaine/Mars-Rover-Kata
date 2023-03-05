@@ -2,8 +2,7 @@ package org.condigdojo.kata;
 
 import java.util.Map;
 
-import static org.condigdojo.kata.Rover.Direction.EAST;
-import static org.condigdojo.kata.Rover.Direction.NORTH;
+import static org.condigdojo.kata.Rover.Direction.*;
 
 public class Rover {
 
@@ -27,6 +26,8 @@ public class Rover {
                 y = (y + 1) % 10;
             if(direction == EAST)
                 x = (x + 1) % 10;
+            if (direction == WEST)
+                x = 9;
             return new Coordonate(x, y);
         }
     }
