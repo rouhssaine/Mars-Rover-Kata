@@ -22,8 +22,9 @@ public class Rover {
 
     private char rotateLeft() {
         if (direction == 'N') return 'W';
-        if (direction == 'W') return 'S';
-        if (direction == 'S') return 'E';
+        else if (direction == 'W') return 'S';
+        else if (direction == 'S') return 'E';
+        else if (direction == 'E') return 'N';
         return direction;
     }
 
