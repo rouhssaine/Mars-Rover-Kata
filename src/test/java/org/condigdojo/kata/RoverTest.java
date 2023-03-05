@@ -52,6 +52,7 @@ class RoverTest {
     @ParameterizedTest(name = "should return {1} when execute {0}")
     @CsvSource(value = {
             "RM -> 1:0:E",
+            "RMMMMMMMMMM -> 0:0:E",
     }, delimiterString = " -> ")
     void should_move_right(String commands, String expected) {
         assertThat(rover.execute(commands)).isEqualTo(expected);
