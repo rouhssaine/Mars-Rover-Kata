@@ -20,7 +20,7 @@ public class Rover {
 
     record Coordonate(int x, int y) {
         Coordonate move() {
-            return new Coordonate(this.x, this.y+1);
+            return new Coordonate(this.x, (this.y + 1) % 10);
         }
     }
 
