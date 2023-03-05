@@ -31,7 +31,7 @@ public class Rover {
                 case NORTH -> y = (y + 1) % MAX_HEIGHT;
                 case EAST -> x = (x + 1) % MAX_WIDTH;
                 case WEST -> x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
-                case SOUTH -> y = 9;
+                case SOUTH -> y = (y > 0) ? y - 1 : MAX_HEIGHT - 1;
             }
 
             return new Coordonate(x, y);
