@@ -23,4 +23,16 @@ class RoverTest {
         assertThat(result).isEqualTo("0:0:E");
     }
 
+    @Test
+    void should_rotate_right_right() {
+        //GIVEN
+        rover = new Rover();
+
+        //WHEN
+        var result = rover.execute("RR");
+
+        //THEN
+        assertThat(result).isEqualTo("0:0:S");
+    }
+
 }
