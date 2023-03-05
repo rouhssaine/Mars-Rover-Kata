@@ -43,6 +43,7 @@ class RoverTest {
     @ParameterizedTest(name = "should return {1} when execute {0}")
     @CsvSource(value = {
             "M -> 0:1:N",
+            "MMMMMMMMMM -> 0:0:N", //wraps around if it reaches the end of the grid
     }, delimiterString = " -> ")
     void should_move(String commands, String expected) {
         assertThat(rover.execute(commands)).isEqualTo(expected);
